@@ -99,7 +99,7 @@ def bot():
 
 
 
-maxthreads = int(input("How many Threads?\n"))
+maxthreads = int(input("How many Threads? Recommended: between 200 and 1000\n"))
 
 threading.Thread(target=a.printservice).start()
 num = 0
