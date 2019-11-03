@@ -8,7 +8,6 @@ import platform
 
 import requests
 from colorama import Fore, init
-from flask import Flask, request
 
 intro = """
 ███████╗████████╗██████╗ ███████╗ █████╗ ███╗   ███╗      ██████╗  ██████╗ ████████╗████████╗███████╗██████╗ 
