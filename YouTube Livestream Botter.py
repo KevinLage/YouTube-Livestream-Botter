@@ -56,6 +56,7 @@ class proxy():
         while True:
             url = "https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&ssl=yes"
             r = requests.get(url)
+
             self.splited = r.text.split("\r\n") #scraping and splitting proxies
             time.sleep(600)
     
@@ -97,7 +98,7 @@ def bot():
             pass
 
 
-
+time.sleep(7)
 maxthreads = int(input("How many Threads? Recommended: 500 - 1000\n"))
 
 threading.Thread(target=a.printservice).start()
