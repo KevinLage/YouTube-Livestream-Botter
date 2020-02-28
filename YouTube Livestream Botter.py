@@ -64,7 +64,7 @@ class proxy():
         random1 = random.choice(self.splited) #choose a random proxie
         return random1
     def FormatProxy(self):
-	    proxyOutput = {'https':self.get_proxy()}
+	    proxyOutput = {'https' :'https://'+self.get_proxy()}
 	    return proxyOutput
 
     def __init__(self):
