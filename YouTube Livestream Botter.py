@@ -10,12 +10,14 @@ import requests
 from colorama import Fore, init
 
 intro = """
-███████╗████████╗██████╗ ███████╗ █████╗ ███╗   ███╗      ██████╗  ██████╗ ████████╗████████╗███████╗██████╗ 
-██╔════╝╚══██╔══╝██╔══██╗██╔════╝██╔══██╗████╗ ████║      ██╔══██╗██╔═══██╗╚══██╔══╝╚══██╔══╝██╔════╝██╔══██╗
-███████╗   ██║   ██████╔╝█████╗  ███████║██╔████╔██║█████╗██████╔╝██║   ██║   ██║      ██║   █████╗  ██████╔╝
-╚════██║   ██║   ██╔══██╗██╔══╝  ██╔══██║██║╚██╔╝██║╚════╝██╔══██╗██║   ██║   ██║      ██║   ██╔══╝  ██╔══██╗
-███████║   ██║   ██║  ██║███████╗██║  ██║██║ ╚═╝ ██║      ██████╔╝╚██████╔╝   ██║      ██║   ███████╗██║  ██║
-╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝      ╚═════╝  ╚═════╝    ╚═╝      ╚═╝   ╚══════╝╚═╝  ╚═╝
+sssssssssssss  sssssssssssss  ssss    sss
+sssssssssssss  sssssssssssss  ssss  sss
+sssss          ssss           ssss sss
+sssssssssssss  sssssssssssss  sssssss
+sssssssssssss  sssssssssssss  sssssss
+        sssss  ssss           ssss  sss
+sssssssssssss  sssssssssssss  ssss    sss
+sssssssssssss  sssssssssssss  ssss      sss
 """
 
 print(intro)
