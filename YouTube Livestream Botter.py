@@ -46,7 +46,7 @@ class main(object):
                 os.system(clear)
                 print(Fore.LIGHTCYAN_EX + intro + Fore.LIGHTMAGENTA_EX)
                 print(
-                    Fore.LIGHTCYAN_EX + f"Botted:{self.botted}\n")
+                    Fore.LIGHTCYAN_EX + f("Botted:{self.botted}\n")
                 for i in range(len(self.printing) - 10, len(self.printing)):
                     try:
                         print(self.printing[i])
