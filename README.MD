@@ -8,7 +8,7 @@
 
 # 2.0 Instructions for Windows/Linux (.py / Python)
 
-# 3.0 Whats the ID of a Livestream?
+# 3.0 What's the ID of a Livestream?
 
-YouTube URLs look something like this => https://www.youtube.com/watch?v=dsfsdefgdfdsf <br />
-Then _dsfsdefgdfdsf_ would be the ID of the video.
+YouTube URLs look something like this => https://www.youtube.com/watch?v=dQw4w9WgXcQ <br />
+Then _dQw4w9WgXcQ_ would be the ID of the video.
