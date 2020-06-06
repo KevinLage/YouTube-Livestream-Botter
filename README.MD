@@ -1,4 +1,4 @@
-# 1.0 Instructions for Windows (.exe / Executeable File)
+# 1.0 Instructions for Windows (.exe / Windows Executable File)
 
  - Download the ".exe" variant of the program.
  - Double click or right click -> execute the file
