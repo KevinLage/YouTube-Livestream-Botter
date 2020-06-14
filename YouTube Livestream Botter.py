@@ -16,6 +16,8 @@ intro = """
 ╚════██║   ██║   ██╔══██╗██╔══╝  ██╔══██║██║╚██╔╝██║╚════╝██╔══██╗██║   ██║   ██║      ██║   ██╔══╝  ██╔══██╗
 ███████║   ██║   ██║  ██║███████╗██║  ██║██║ ╚═╝ ██║      ██████╔╝╚██████╔╝   ██║      ██║   ███████╗██║  ██║
 ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝      ╚═════╝  ╚═════╝    ╚═╝      ╚═╝   ╚══════╝╚═╝  ╚═╝
+
+https://github.com/KevinLage/YouTube-Livestream-Botter
 """
 
 print(intro)
@@ -25,8 +27,8 @@ if platform.system() == "Windows": #checking OS
 else:
     clear = "clear"
 
-def randomName(size=11, chars=string.ascii_letters + string.digits):
-    return ''.join(random.choice(chars) for i in range(size))
+proxy_loading = input("[1] Load Proxys from APIs\n[2] Load Proxys from proxys.txt\n")
+
 
 
 token = input("ID?\n")
@@ -55,15 +57,20 @@ class main(object):
                 time.sleep(0.5)
 a = main()
 class proxy():
-
+    global proxy_loading
     def update(self):
         while True:
-            data = ''
-            urls = ["https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&ssl=yes","https://www.proxy-list.download/api/v1/get?type=https&anon=elite"]
-            for url in urls:
-                data += requests.get(url).text
-                
-            self.splited += data.split("\r\n") #scraping and splitting proxies
+
+            if proxy_loading == "1":
+                data = ''
+                data = open("proxys.txt", "r").read()
+                self.splited += data.split("\n") #scraping and splitting proxies
+            else:
+                data = ''
+                urls = ["https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&ssl=yes","https://www.proxy-list.download/api/v1/get?type=https&anon=elite"]
+                for url in urls:
+                    data += requests.get(url).text
+                    self.splited += data.split("\r\n") #scraping and splitting proxies
             time.sleep(600)
     
     def get_proxy(self):
@@ -94,11 +101,11 @@ def bot():
             
             
             a.botted += 1
-        except Exception as E:
+        except:
             pass
 
 
-time.sleep(7)
+
 maxthreads = int(input("How many Threads? Recommended: 500 - 1000\n"))
 
 threading.Thread(target=a.printservice).start()
