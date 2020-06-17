@@ -61,7 +61,7 @@ class proxy():
     def update(self):
         while True:
 
-            if proxy_loading == "1":
+            if proxy_loading == "2":
                 data = ''
                 data = open("proxys.txt", "r").read()
                 self.splited += data.split("\n") #scraping and splitting proxies
