@@ -76,7 +76,12 @@ class proxy():
                 self.splited += data.split("\n") #scraping and splitting proxies
             else:
                 data = ''
-                urls = ["https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt","https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&ssl=yes","https://www.proxy-list.download/api/v1/get?type=https&anon=elite"]
+                urls = [
+                    "https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt",
+                    "https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&ssl=yes",
+                    "https://www.proxy-list.download/api/v1/get?type=https&anon=elite",
+                ]
+
                 for url in urls:
                     data += requests.get(url).text
                     self.splited += data.split("\r\n") #scraping and splitting proxies
@@ -102,13 +107,40 @@ def bot():
             s = requests.session()
             random_proxy = proxy1.FormatProxy()
 
-            resp = s.get("https://m.youtube.com/watch?v=" + token + "?disable_polymer=1",headers={'Host': 'm.youtube.com', 'Proxy-Connection': 'Keep-Alive', 'User-Agent': ua, 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', 'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7', 'Accept-Encoding': 'gzip, deflate', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache'},proxies=random_proxy)   # simple get request to youtube for the base URL
-            url = resp.text.split(r'videostatsWatchtimeUrl\":{\"baseUrl\":\"')[1].split(r'\"}')[0].replace(r"\\u0026",r"&").replace('%2C',",").replace("\/","/")  #getting the base url for parsing
-            cl = url.split("cl=")[1].split("&")[0] #parsing some infos for the URL
-            ei = url.split("ei=")[1].split("&")[0]
-            of = url.split("of=")[1].split("&")[0]
-            vm = url.split("vm=")[1].split("&")[0]
-            s.get("https://s.youtube.com/api/stats/watchtime?ns=yt&el=detailpage&cpn=isWmmj2C9Y2vULKF&docid=" + token + "&ver=2&cmt=7334&ei=" + ei + "&fmt=133&fs=0&rt=1003&of=" + of +"&euri&lact=4418&live=dvr&cl=" + cl + "&state=playing&vm=" + vm + "&volume=100&c=MWEB&cver=2.20200313.03.00&cplayer=UNIPLAYER&cbrand=apple&cbr=Safari%20Mobile&cbrver=12.1.15E148&cmodel=iphone&cos=iPhone&cosver=12_2&cplatform=MOBILE&delay=5&hl=ru&cr=GB&rtn=1303&afmt=140&lio=1556394045.182&idpj=&ldpj=&rti=1003&muted=0&st=7334&et=7634",headers={'Host': 's.youtube.com', 'Proxy-Connection': 'Keep-Alive', 'User-Agent': ua, 'Accept': 'image/png,image/svg+xml,image/*;q=0.8,video/*;q=0.8,*/*;q=0.5', 'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3', 'Referer': 'https://m.youtube.com/watch?v=' + token},proxies=random_proxy)   # API GET request
+            headers = {
+                'Host': 'm.youtube.com',
+                'Proxy-Connection': 'Keep-Alive',
+                'User-Agent': ua,
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
+                'Accept-Encoding': 'gzip, deflate',
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache'
+            }
+
+            resp = s.get("https://m.youtube.com/watch?v=" + token + "?disable_polymer=1", headers=headers, proxies=random_proxy)   # simple get request to youtube for the base URL
+
+            resUrl = resp.text.split(r'videostatsWatchtimeUrl\":{\"baseUrl\":\"')[1].split(r'\"}')[0].replace(r"\\u0026",r"&").replace('%2C',",").replace("\/","/")  #getting the base url for parsing
+
+            cl = resUrl.split("cl=")[1].split("&")[0] #parsing some infos for the URL
+            ei = resUrl.split("ei=")[1].split("&")[0]
+            of = resUrl.split("of=")[1].split("&")[0]
+            vm = resUrl.split("vm=")[1].split("&")[0]
+
+            headers['Host'] = 's.youtube.com'
+            headers['Accept'] = 'image/png,image/svg+xml,image/*;q=0.8,video/*;q=0.8,*/*;q=0.5'
+            headers['Referer'] = 'https://m.youtube.com/watch?v=' + token
+            del headers['Cache-Control']
+            del headers['Pragma']
+
+            url = "https://s.youtube.com/api/stats/watchtime?ns=yt&el=detailpage&cpn=isWmmj2C9Y2vULKF&docid=" + token
+            url += "&ver=2&cmt=7334&ei=" + ei
+            url += "&fmt=133&fs=0&rt=1003&of=" + of
+            url += "&euri&lact=4418&live=dvr&cl=" + cl
+            url += "&state=playing&vm=" + vm
+            url += "&volume=100&c=MWEB&cver=2.20200313.03.00&cplayer=UNIPLAYER&cbrand=apple&cbr=Safari%20Mobile&cbrver=12.1.15E148&cmodel=iphone&cos=iPhone&cosver=12_2&cplatform=MOBILE&delay=5&hl=ru&cr=GB&rtn=1303&afmt=140&lio=1556394045.182&idpj=&ldpj=&rti=1003&muted=0&st=7334&et=7634"
+
+            s.get(urlToGet, headers=headers, proxies=random_proxy)   # API GET request
 
             a.botted += 1
         except:
