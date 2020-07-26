@@ -140,7 +140,7 @@ def bot():
             url += "&state=playing&vm=" + vm
             url += "&volume=100&c=MWEB&cver=2.20200313.03.00&cplayer=UNIPLAYER&cbrand=apple&cbr=Safari%20Mobile&cbrver=12.1.15E148&cmodel=iphone&cos=iPhone&cosver=12_2&cplatform=MOBILE&delay=5&hl=ru&cr=GB&rtn=1303&afmt=140&lio=1556394045.182&idpj=&ldpj=&rti=1003&muted=0&st=7334&et=7634"
 
-            s.get(urlToGet, headers=headers, proxies=random_proxy)   # API GET request
+            s.get(url, headers=headers, proxies=random_proxy)   # API GET request
 
             a.botted += 1
         except:
