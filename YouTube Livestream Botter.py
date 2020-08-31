@@ -78,9 +78,12 @@ class proxy():
                 data = ''
                 urls = ["https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt","https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&ssl=yes","https://www.proxy-list.download/api/v1/get?type=https&anon=elite"]
                 for url in urls:
-                    data += requests.get(url).text
-                    self.splited += data.split("\n")
-                    self.splited = [s.replace('\r', "") for s in self.splited]
+                    try:
+                        data += requests.get(url).text
+                        self.splited += data.split("\n")
+                        self.splited = [s.replace('\r', "") for s in self.splited]
+                    except:
+                        pass
             time.sleep(600)
 
     def get_proxy(self):
