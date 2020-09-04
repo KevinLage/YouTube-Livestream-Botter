@@ -83,6 +83,7 @@ class proxy():
                         self.splited += data.split("\n")
                         self.splited = [s.replace('\r', "") for s in self.splited]
                     except:
+			print("Proxy loading failed!")
                         pass
             time.sleep(600)
 
